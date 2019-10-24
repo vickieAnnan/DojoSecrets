@@ -1,0 +1,20 @@
+<h1>Update User</h1>
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+<% end %>
+
+<form action="/users/update/id" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <Label>Email</Label>
+    <input type="text" name="email" value="<%= current_user.email %>">
+    <br>
+    <Label>Name</Label>
+    <input type="text" name="name" value="<% current_user.name %>">
+    <input type="submit" value="Update">
+</form>
+<form action="<%= users_delete_path %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+	<input type="submit" name="submit" value="Delete">
+</form>
